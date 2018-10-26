@@ -7,11 +7,17 @@
 </ion-header>
 
 <ion-content padding>
-<img [src]="currentImage" *ngIf="currentImage">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 *ngFor="let photo of photoService.photos">
+        <img [src]="photo.data" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-<ion-fab center bottom>
-  <button ion-fab (click)="takePicture()">
-    <ion-icon name="camera"></ion-icon>
-  </button>
-</ion-fab>
+  <ion-fab center bottom>
+    <button ion-fab (click)="photoService.takePicture()">
+      <ion-icon name="camera"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>
